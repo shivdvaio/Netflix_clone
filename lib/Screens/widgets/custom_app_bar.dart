@@ -19,7 +19,7 @@ class CustomAppbar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                _appBarButton(buttonName: "TV Shows",onTapfunction: (){},),
+                _appBarButton(buttonName: "TV Shows",onTapfunction: (){print("tv shows");},),
                 _appBarButton(buttonName: "Movies",onTapfunction: (){},),
                 _appBarButton(buttonName: "My List",onTapfunction: (){},),
 
@@ -27,11 +27,10 @@ class CustomAppbar extends StatelessWidget {
             )
           ],),
         ),
-      color: Colors.black.withOpacity((scrollOffset ?? 0/350).clamp(0, 1).toDouble()),
+      color: Colors.black.withOpacity((scrollOffset ?? 0 /350).clamp(0, 1).toDouble()),
     );
   }
-  
-  
+
 }
 
 class _appBarButton extends StatelessWidget {

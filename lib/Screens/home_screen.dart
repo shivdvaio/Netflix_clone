@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'widgets/custom_app_bar.dart';
 import 'package:flutter_netflix_responsive_ui/Screens/widgets/content_header.dart';
 import 'package:flutter_netflix_responsive_ui/Screens/widgets/preview.dart';
-
+import 'widgets/content_list.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -17,8 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    _scrollController = ScrollController()
-      ..addListener(() {
+    _scrollController = ScrollController()..addListener(() {
         setState(() {
           _scrollOffset = _scrollController.offset;
         });
@@ -58,14 +57,33 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ContentHeader(featuredContent: sintelContent),
           ),
           SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
             sliver: SliverToBoxAdapter(
               child: Preview(
                 title: "Previews",
                 contentList: previews,
               ),
             ),
-            padding: EdgeInsets.only(top: 20),
           ),
+          SliverToBoxAdapter(child: ContentList(
+          title: "My List",
+            contentList: myList,
+            isOrginals: false,
+
+          ),),
+          SliverToBoxAdapter(child: ContentList(
+              title:"Netflix Orginals",
+              contentList: originals ,
+            isOrginals: true,
+
+          ),),
+          SliverToBoxAdapter(child: ContentList(
+              title:"Trending",
+              contentList: trending,
+            isOrginals: false,
+
+          )
+            ,)
         ],
       ),
     );
